@@ -10,6 +10,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 public class LoginGUI extends JFrame {
 	private JLabel lblEmail, lblPassword;
@@ -56,7 +57,7 @@ public class LoginGUI extends JFrame {
 		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtEmail.setColumns(10);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setBounds(125, 91, 260, 25);
 		pnlMain.add(txtPassword);
 		txtPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -78,6 +79,9 @@ public class LoginGUI extends JFrame {
 		pnlMain.add(btnCancel);
 		btnCancel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
+		//Set enter key to default 
+		
+		pnlMain.getRootPane().setDefaultButton(btnLogin);
 		
 		//Button Action Listeners
 		btnLogin.addActionListener(new ActionListener() {
@@ -107,11 +111,9 @@ public class LoginGUI extends JFrame {
 			JOptionPane.showMessageDialog(null, "Please enter an email");
 		else if(txtPassword.getText().length()==0)
 			JOptionPane.showMessageDialog(null, "Please enter a password");
-		else{
-			Game g = new Game(1);
-			
-			g.gameLoop();
+		else {
 			//User user = new User(txtEmail.getText(),txtPassword.getText());
+			User user = new User(txtEmail.getText(),txtPassword.getText());
 		}
 	}
 	

@@ -2,7 +2,10 @@ package edu.pitt.is1017.spaceinvaders;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,12 +75,12 @@ public class RegisterGUI extends JFrame {
 		txtEmail.setBounds(177, 90, 249, 23);
 		panel.add(txtEmail);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setColumns(10);
 		txtPassword.setBounds(177, 131, 249, 23);
 		panel.add(txtPassword);
 		
-		txtConfirmPassword = new JTextField();
+		txtConfirmPassword = new JPasswordField();
 		txtConfirmPassword.setColumns(10);
 		txtConfirmPassword.setBounds(177, 172, 249, 23);
 		panel.add(txtConfirmPassword);
@@ -105,13 +108,39 @@ public class RegisterGUI extends JFrame {
 			}
 		});
 		
+		//set default enter button
+		
+		panel.getRootPane().setDefaultButton(btnRegister);
+
+		
 	}
 	
 	private void btnCancelActionPerformed(ActionEvent evt){
-		System.exit(0);
+		dispose();
 	}
 	
 	private void btnRegisterActionPerformed(ActionEvent evt){
+		System.out.println(txtPassword.getText());
+		System.out.println(txtConfirmPassword.getText());
+		
+		
+		if(txtFirstName.getText().length()==0)
+			JOptionPane.showMessageDialog(null, "Please enter an first name");
+		else if(txtLastName.getText().length()==0)
+			JOptionPane.showMessageDialog(null, "Please enter a last name");
+		else if(txtEmail.getText().length()==0)
+			JOptionPane.showMessageDialog(null, "Please enter an email");
+		else if(txtPassword.getText().length()==0)
+			JOptionPane.showMessageDialog(null, "Please enter a password");
+		else if (txtConfirmPassword.getText().length()==0)
+			JOptionPane.showMessageDialog(null, "Please confirm password");
+		else if (!(txtPassword.getText().equals(txtConfirmPassword.getText())))
+			JOptionPane.showMessageDialog(null, "Passwords do not match");
+		else
+		{
+			User user = new User(txtFirstName.getText(),txtLastName.getText(),txtEmail.getText(),txtPassword.getText());
+			dispose();
+		}
 		
 	}
 }
