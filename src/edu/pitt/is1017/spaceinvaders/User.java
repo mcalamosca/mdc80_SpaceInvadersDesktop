@@ -4,7 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-
+/**
+ * 
+ * @author Micah Calamosca
+ *
+ */
 public class User {
 	private int userID;
 	private String lastName;
@@ -23,19 +27,20 @@ public class User {
 		try {
 			if(rs.next()){
 				try {
-					this.userID = rs.getInt("userID");
+					this.userID = rs.getInt(userID);
 					this.lastName = rs.getString("lastName");
 					this.firstName = rs.getString("firstName");
 					this.email = rs.getString("email");
 					this.password = rs.getString("password");
 					this.loggedIn = true;
-
+					
+					/*
 					System.out.println(this.userID);
 					System.out.println(this.lastName);
 					System.out.println(this.firstName);
 					System.out.println(this.email);
 					System.out.println(this.password);
-
+					*/
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -44,6 +49,7 @@ public class User {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		db.closeConnection();
 	}
 
 	public User(String email, String password){
@@ -64,12 +70,15 @@ public class User {
 				this.email = rs.getString("email");
 				this.password = rs.getString("password");
 				this.loggedIn = true;
-
+				
+				JOptionPane.showMessageDialog(null, "Logged in successful!");
+				/*
 				System.out.println(this.userID);
 				System.out.println(this.lastName);
 				System.out.println(this.firstName);
 				System.out.println(this.email);
 				System.out.println(this.password);
+				*/
 			}
 			else
 			{
@@ -82,6 +91,8 @@ public class User {
 		}
 
 		db.closeConnection();
+		
+		Game.main(null);
 	}
 
 	public User(String lastName, String firstName, String email, String password){

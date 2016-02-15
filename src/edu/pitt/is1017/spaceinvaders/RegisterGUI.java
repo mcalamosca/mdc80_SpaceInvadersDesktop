@@ -12,7 +12,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
+/**
+ * 
+ * @author Micah Calamosca
+ *
+ */
 public class RegisterGUI extends JFrame {
 	private JTextField txtFirstName;
 	private JTextField txtLastName;

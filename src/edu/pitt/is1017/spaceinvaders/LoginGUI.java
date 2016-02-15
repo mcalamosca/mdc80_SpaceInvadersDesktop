@@ -11,7 +11,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-
+/**
+ * 
+ * @author Micah Calamosca
+ *
+ */
 public class LoginGUI extends JFrame {
 	private JLabel lblEmail, lblPassword;
 	private JTextField txtEmail, txtPassword;
