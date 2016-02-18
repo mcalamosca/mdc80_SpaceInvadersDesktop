@@ -63,14 +63,11 @@ public class Game extends Canvas {
 	/** True if game logic needs to be applied this loop, normally as a result of a game event */
 	private boolean logicRequiredThisLoop = false;
 	
-	private int userID;
-	
 	/**
 	 * Construct our game and set it running.
 	 */
-	public Game(int userID) {
-		this.userID = userID; 
-		//create a frame to contain our game
+	public Game() {
+		// create a frame to contain our game
 		JFrame container = new JFrame("Space Invaders 101");
 		
 		// get hold the content of the frame and set up the resolution of the game
@@ -442,14 +439,12 @@ public class Game extends Canvas {
 	 * 
 	 * @param argv The arguments that are passed into our game
 	 */
-	public static void main(String argv[]) {
-		Game g = new Game(1);
+/*	public static void main(String argv[]) {
+		Game g = new Game();
 
 		// Start the main game loop, note: this method will not
 		// return until the game has finished running. Hence we are
 		// using the actual main thread to run the game.
 		g.gameLoop();
-	
-	}
-	
+	}*/
 }

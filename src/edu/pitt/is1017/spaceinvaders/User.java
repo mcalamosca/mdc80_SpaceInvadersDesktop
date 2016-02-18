@@ -71,14 +71,14 @@ public class User {
 				this.password = rs.getString("password");
 				this.loggedIn = true;
 				
-				JOptionPane.showMessageDialog(null, "Logged in successful!");
+				JOptionPane.showMessageDialog(null, "Login successful!");
 				/*
 				System.out.println(this.userID);
 				System.out.println(this.lastName);
 				System.out.println(this.firstName);
 				System.out.println(this.email);
 				System.out.println(this.password);
-				*/
+				*/				
 			}
 			else
 			{
@@ -91,8 +91,6 @@ public class User {
 		}
 
 		db.closeConnection();
-		
-		Game.main(null);
 	}
 
 	public User(String lastName, String firstName, String email, String password){
