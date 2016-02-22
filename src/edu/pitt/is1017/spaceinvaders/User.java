@@ -114,6 +114,7 @@ public class User {
 		DbUtilities db = new DbUtilities();
 
 		String sql = "UPDATE users ";
+		
 		sql += "SET `lastName` = \"" + getLastName() + "\", ";
 		sql += "SET `firstName` = \"" + getFirstName() + "\", ";
 		sql += "SET `email` = \"" + getEmail() + "\", ";

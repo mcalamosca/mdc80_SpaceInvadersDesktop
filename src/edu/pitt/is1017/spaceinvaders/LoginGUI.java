@@ -116,10 +116,18 @@ public class LoginGUI extends JFrame {
 		else if(txtPassword.getText().length()==0)
 			JOptionPane.showMessageDialog(null, "Please enter a password");
 		else {
+			dispose();
 			User user = new User(txtEmail.getText(),txtPassword.getText());
-
-			Game g = new Game();
-			g.gameLoop();
+			
+			Thread t = new Thread("gameLaunchThread"){
+				public void run(){
+					Game g = new Game();
+					g.gameLoop();
+				}
+			};
+			
+			t.start();
+			
 		}
 	}
 	

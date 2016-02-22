@@ -18,7 +18,7 @@ public class ScoreTracker {
 		
 		String sql = "SELECT MAX(scoreValue) FROM `alieninvasion`.`finalscores` ";
 		sql	+= "WHERE `fk_userID` = \"" + user.getUserID() + "\"";
-		
+			
 		ResultSet rs = db.getResultSet(sql);
 		
 		db.closeConnection();
