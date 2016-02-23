@@ -122,7 +122,7 @@ public class LoginGUI extends JFrame {
 				dispose();
 				Thread t = new Thread("gameLaunchThread"){
 					public void run(){
-						Game g = new Game();
+						Game g = new Game(user);
 						g.gameLoop();
 					}
 				};

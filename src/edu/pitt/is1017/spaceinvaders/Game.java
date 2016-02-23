@@ -63,10 +63,16 @@ public class Game extends Canvas {
 	/** True if game logic needs to be applied this loop, normally as a result of a game event */
 	private boolean logicRequiredThisLoop = false;
 	
+	User user;
+	ScoreTracker sc;
+	
 	/**
 	 * Construct our game and set it running.
 	 */
-	public Game() {
+	public Game(User user) {
+		this.user = user;
+		
+		sc = new ScoreTracker(user);
 		// create a frame to contain our game
 		JFrame container = new JFrame("Space Invaders 101");
 		
@@ -193,6 +199,7 @@ public class Game extends Canvas {
 		
 		if (alienCount == 0) {
 			notifyWin();
+			sc.recordFinalScore();
 		}
 		
 		// if there are still some aliens left then they all need to get faster, so
@@ -286,7 +293,7 @@ public class Game extends Canvas {
 			// remove any entity that has been marked for clear up
 			entities.removeAll(removeList);
 			removeList.clear();
-
+			
 			// if a game event has indicated that game logic should
 			// be resolved, cycle round every entity requesting that
 			// their personal logic should be considered.

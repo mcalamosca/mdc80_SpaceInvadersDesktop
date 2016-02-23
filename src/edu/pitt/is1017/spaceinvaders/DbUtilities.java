@@ -113,7 +113,7 @@ public class DbUtilities {
     	try {
     		this.conn.close();
     		if (conn.isClosed()) 
-    	        System.out.println("Connection closed.");
+    	        return;//System.out.println("Connection closed.");
     	}catch (Exception e){
     		e.printStackTrace(); //debug
     	}
