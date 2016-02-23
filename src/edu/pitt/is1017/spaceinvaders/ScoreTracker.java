@@ -16,10 +16,15 @@ public class ScoreTracker {
 		
 		DbUtilities db = new DbUtilities();
 		
-		String sql = "SELECT MAX(scoreValue) FROM `alieninvasion`.`finalscores` ";
-		sql	+= "WHERE `fk_userID` = \"" + user.getUserID() + "\"";
+		String initScore = "INSERT INTO `alieninvasion`.runningscores`(`gameID`,`scoreValue`,`fk_userID`) ";
+		initScore += "VALUES (\""+this.gameID+"\",\"" +this.currentScore+"\",\""+this.user.getUserID()+"\");";
+		
+		db.executeQuery(initScore);
+		
+		String highScore = "SELECT MAX(scoreValue) FROM `alieninvasion`.`finalscores` ";
+		highScore	+= "WHERE `fk_userID` = \"" + user.getUserID() + "\"";
 			
-		ResultSet rs = db.getResultSet(sql);
+		ResultSet rs = db.getResultSet(highScore);
 		
 		db.closeConnection();
 	}
@@ -34,12 +39,13 @@ public class ScoreTracker {
 			currentScore--;
 		}
 		
-		String initScore = "INSERT INTO `alieninvasion`.runningscores`(`gameID`,`scoreValue`,`fk_userID`) ";
-		initScore += "VALUES (\""+this.gameID+"\",\"" +this.currentScore+"\",\""+this.user.getUserID()+"\");";
+		String updateScore = "UPDATE `alieninvasion`.`runningscores` SET `scoreValue`=`"+ getCurrentScore() +"` ";
+		updateScore += "WHERE `gameID`=`"+this.gameID+"` AND `userID`=`"+this.user.getUserID()+"`;";
 	}
 	
 	public void recordFinalScore(){
-		
+		DbUtilities db = new DbUtilities();		
+
 	}
 
 	public int getCurrentScore() {
