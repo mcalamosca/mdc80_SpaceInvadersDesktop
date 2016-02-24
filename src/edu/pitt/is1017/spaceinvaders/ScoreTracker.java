@@ -107,6 +107,8 @@ public class ScoreTracker {
 		JOptionPane.showMessageDialog(null, "Congratulations! You've won. \nYour score was: " + currentScore + "\nYour Highest Score: "
 				+ highestScore + "\n\nOverall High Score\n"+firstNameOther+" "+lastNameOther+ ": "+highestScoreOther);
 
+		//set currentscore to 0 for next game
+		setCurrentScore(0);
 	}
 
 	public int getCurrentScore() {
@@ -115,6 +117,10 @@ public class ScoreTracker {
 
 	public int getHighestScore() {
 		return highestScore;
+	}
+
+	public void setCurrentScore(int currentScore) {
+		this.currentScore = currentScore;
 	}
 
 
